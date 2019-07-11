@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { AuthService } from './_services/auth.service';
 import { ErrorInterceptorProvide } from './_services/error.interceptor';
+import { AlertifyServiceService } from './_services/alertify-service.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ErrorInterceptorProvide } from './_services/error.interceptor';
   ],
   providers: [
     AuthService,
-    ErrorInterceptorProvide
+    ErrorInterceptorProvide,
+    AlertifyServiceService
   ],
   bootstrap: [AppComponent]
 })
