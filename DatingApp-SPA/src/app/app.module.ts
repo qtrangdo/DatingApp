@@ -14,6 +14,10 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './_services/auth.service';
 import { ErrorInterceptorProvide } from './_services/error.interceptor';
 import { AlertifyServiceService } from './_services/alertify-service.service';
+import { MembersComponent } from './components/members/members.component';
+import { ListsComponent } from './components/lists/lists.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,10 @@ import { AlertifyServiceService } from './_services/alertify-service.service';
     ValueComponent,
     NavbarComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    MembersComponent,
+    ListsComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +40,8 @@ import { AlertifyServiceService } from './_services/alertify-service.service';
   providers: [
     AuthService,
     ErrorInterceptorProvide,
-    AlertifyServiceService
+    AlertifyServiceService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
