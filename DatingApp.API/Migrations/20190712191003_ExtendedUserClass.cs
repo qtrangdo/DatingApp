@@ -45,7 +45,7 @@ namespace DatingApp.API.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
-                name: "KnowAs",
+                name: "KnownAs",
                 table: "Users",
                 nullable: true);
 
@@ -66,6 +66,7 @@ namespace DatingApp.API.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    Url = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     DateAdded = table.Column<DateTime>(nullable: false),
                     IsMain = table.Column<bool>(nullable: false),
@@ -122,7 +123,7 @@ namespace DatingApp.API.Migrations
                 table: "Users");
 
             migrationBuilder.DropColumn(
-                name: "KnowAs",
+                name: "KnownAs",
                 table: "Users");
 
             migrationBuilder.DropColumn(
