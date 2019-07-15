@@ -14,7 +14,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
 
-import { AuthService } from './_services/auth.service';
 import { ErrorInterceptorProvide } from './_services/error.interceptor';
 import { AlertifyServiceService } from './_services/alertify-service.service';
 import { MemberListComponent } from './components/members/member-list/member-list.component';
@@ -23,7 +22,11 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { MemberCardComponent } from './components/members/member-card/member-card.component';
 import { MemberDetailComponent } from './components/members/member-detail/member-detail.component';
 import { MemberEditComponent } from './components/members/member-edit/member-edit.component';
+
 import { AuthGuard } from './_guards/auth.guard';
+import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
+
+import { AuthService } from './_services/auth.service';
 import { UserService } from './_services/user.service';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
@@ -68,6 +71,7 @@ export function tokenGetter() {
     ErrorInterceptorProvide,
     AlertifyServiceService,
     AuthGuard,
+    PreventUnsavedChangesGuard,
     UserService,
     MemberDetailResolver,
     MemberListResolver,
