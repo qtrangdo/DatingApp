@@ -14,7 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './_services/auth.service';
 import { ErrorInterceptorProvide } from './_services/error.interceptor';
 import { AlertifyServiceService } from './_services/alertify-service.service';
-import { MembersComponent } from './components/members/members.component';
+import { MemberListComponent } from './components/members/member-list/member-list.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -27,7 +27,7 @@ import { UserService } from './_services/user.service';
     NavbarComponent,
     HomeComponent,
     RegisterComponent,
-    MembersComponent,
+    MemberListComponent,
     ListsComponent,
     MessagesComponent
   ],
