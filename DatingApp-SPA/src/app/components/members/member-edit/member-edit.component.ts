@@ -21,6 +21,7 @@ export class MemberEditComponent implements OnInit {
   }
 
   user: User;
+  photoUrl: string;
 
   constructor (
     private route: ActivatedRoute,
@@ -31,7 +32,8 @@ export class MemberEditComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe(data => this.user = data.user,
-      err => this.alertify.error(err))
+      err => this.alertify.error(err));
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl)
   }
 
   updateUser() {
@@ -39,6 +41,7 @@ export class MemberEditComponent implements OnInit {
     this.userService.updateUser(userId, this.user).subscribe(next => {
       this.alertify.success('Profile updated successfully');
       this.editForm.reset(this.user);
+      //only possible because of ViewChild
     }, err => this.alertify.error(err))
   }
 
