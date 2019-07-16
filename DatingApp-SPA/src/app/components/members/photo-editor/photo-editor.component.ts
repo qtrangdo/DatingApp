@@ -70,4 +70,14 @@ export class PhotoEditorComponent implements OnInit {
       localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
     }, err => this.alertify.error(err))
   }
+
+  deletePhoto(photo: Photo) {
+    this.alertify.confirm("Please confirm photo deletion", () => {
+      this.userService.deletePhoto(this.authService.decodeToken.nameid, photo.id).subscribe(() => {
+        const removeIndex = this.photos.findIndex(p => p.id == photo.id);
+        this.photos.splice(removeIndex, 1);
+        this.alertify.success("Photo as been deleted successfully");
+      }, err => this.alertify.error(err))
+    })
+  }
 }
