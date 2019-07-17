@@ -43,7 +43,8 @@ export class AuthService {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  register(model: any) {
-    return this.http.post(this.baseUrl + "register", model);
+  register(user: User) {
+    user.username = user.username.toLowerCase();
+    return this.http.post(this.baseUrl + "register", user);
   }
 }

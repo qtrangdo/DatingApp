@@ -4,6 +4,7 @@ import { AlertifyServiceService } from 'src/app/_services/alertify-service.servi
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { User } from 'src/app/_models/User';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 })
 export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter()
-  model: any = {};
+  user: User;
   registerForm: FormGroup;
   colorTheme = 'theme-red';
   bsConfig: Partial<BsDatepickerConfig>;
@@ -55,13 +56,16 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    // this.authService.register(this.model).subscribe(() => {
-    //   this.alertifyService.success('Registered');
-    //   this.router.navigate(['/'])
-    // }, err => {
-    //   this.alertifyService.error(err)
-    // });
-    console.log(this.registerForm.value);
+    if (this.registerForm.valid) {
+      this.user = Object.assign({}, this.registerForm.value);
+      this.authService.register(this.user).subscribe(() => {
+        this.alertifyService.success("Registration successfully");
+      }, err => this.alertifyService.error(err),
+        () => this.authService.login(this.user).subscribe(() => {
+          this.router.navigate(['/members']);
+        })
+      )
+    }
   }
 
   cancel() {
