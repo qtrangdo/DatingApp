@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 import { AlertifyServiceService } from 'src/app/_services/alertify-service.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,8 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter()
   model: any = {};
   registerForm: FormGroup;
+  colorTheme = 'theme-red';
+  bsConfig: Partial<BsDatepickerConfig>;
 
   constructor (
     private authService: AuthService,
@@ -22,12 +25,20 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.bsConfig = {
+      containerClass: 'theme-red'
+    }
     this.createRegisterForm();
   }
 
   createRegisterForm() {
     this.registerForm = this.fb.group({
+      gender: ['male'],
       username: ['', Validators.required],
+      knownAs: ['', Validators.required],
+      dateOfBirth: [null, Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
       confirmPassword: ['', Validators.required]
     }, { validator: this.passwordMatchValidator })

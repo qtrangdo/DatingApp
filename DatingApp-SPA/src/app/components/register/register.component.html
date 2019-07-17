@@ -17,9 +17,39 @@
   <h2 class="text-center text-primary">Sign Up</h2>
   <hr>
   <div class="form-group">
+    <label for="control-label" style="margin-right:10px">Gender</label>
+    <label class="radio-inline">
+      <input type="radio" value="male" class="mr-3" formControlName="gender">Male
+    </label>
+    <label class="radio-inline ml-3">
+      <input type="radio" value="female" class="mr-3" formControlName="gender">Female
+    </label>
+  </div>
+  <div class="form-group">
     <input type="text" class="form-control" placeholder="Username" formControlName="username"
       [ngClass]="{'is-invalid': registerForm.get('username').errors && registerForm.get('username').touched}">
     <div class="invalid-feedback">Username is required</div>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Known As" formControlName="knownAs"
+      [ngClass]="{'is-invalid': registerForm.get('knownAs').errors && registerForm.get('knownAs').touched}">
+    <div class="invalid-feedback">Known-as Name is required</div>
+  </div>
+  <div class="form-group">
+    <input type="text" bsDatepicker class="form-control" placeholder="Date of Birth" formControlName="dateOfBirth"
+      [bsConfig]="bsConfig"
+      [ngClass]="{'is-invalid': registerForm.get('dateOfBirth').errors && registerForm.get('dateOfBirth').touched}">
+    <div class="invalid-feedback">DOB is required</div>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="City" formControlName="city"
+      [ngClass]="{'is-invalid': registerForm.get('city').errors && registerForm.get('city').touched}">
+    <div class="invalid-feedback">City is required</div>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Country" formControlName="country"
+      [ngClass]="{'is-invalid': registerForm.get('country').errors && registerForm.get('country').touched}">
+    <div class="invalid-feedback">Country is required</div>
   </div>
   <div class="form-group">
     <input type="password" class="form-control" placeholder="Password" formControlName="password"
