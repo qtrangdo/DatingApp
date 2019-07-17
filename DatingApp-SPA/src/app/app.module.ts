@@ -7,6 +7,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FileUploadModule } from 'ng2-file-upload';
 import { NgxGalleryModule } from 'ngx-gallery';
+import {TimeAgoPipe} from 'time-ago-pipe';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -53,7 +54,8 @@ export function tokenGetter() {
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,
