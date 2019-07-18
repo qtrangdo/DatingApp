@@ -10,6 +10,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import {TimeAgoPipe} from 'time-ago-pipe';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -69,13 +70,14 @@ export function tokenGetter() {
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
+    PaginationModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ["localhost:5000"],
         blacklistedRoutes: ["localhost:5000/api/auth"]
       }
-    }),
+    })
   ],
   providers: [
     AuthService,
