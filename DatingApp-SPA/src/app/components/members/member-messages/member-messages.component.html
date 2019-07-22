@@ -37,16 +37,17 @@
               <strong class="primary-font float-right">{{message.senderKnownAs}} </strong>
             </div>
             <p>{{message.content}}</p>
-          </div> 
+          </div>
         </div>
       </li>
     </ul>
     <div class="card-footer">
-      <form action="">
+      <form #messageForm="ngForm" (ngSubmit)="messageForm.valid && sendMessage()">
         <div class="input-group">
-          <input type="text" class="form-control input-sm" placeholder="Send a private message">
+          <input [(ngModel)]="newMessage.content" name="content" required type="text" class="form-control input-sm"
+            placeholder="Send a private message">
           <div class="input-group-append">
-            <button class="btn btn-primary">Send</button>
+            <button class="btn btn-primary" [disabled]="!messageForm.valid">Send</button>
           </div>
         </div>
       </form>
