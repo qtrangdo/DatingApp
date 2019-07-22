@@ -103,7 +103,7 @@ namespace DatingApp.API.Controllers
 
       if (messageFromRepo.SenderId == userId) messageFromRepo.SenderDeleted = true;
       if (messageFromRepo.RecipientId == userId) messageFromRepo.RecipientDelete = true;
-      if (messageFromRepo.SenderId == userId && messageFromRepo.RecipientId == userId) {
+      if (messageFromRepo.SenderDeleted == true && messageFromRepo.RecipientDelete == true) {
         _repo.Delete(messageFromRepo);
       }
 
